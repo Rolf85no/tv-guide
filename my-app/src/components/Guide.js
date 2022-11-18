@@ -44,7 +44,7 @@ export const Guide = ({ allChannelsData }) => {
                 setTime={setTime}
             />
 
-            {/* TIMELINE MÅ I SAMME CONTAINER SOM PROGRAMMET*/}
+            {/* TIMELINE MÅ I SAMME CONTAINERS SOM PROGRAMMET*/}
 
 
             {time && <Timeline
