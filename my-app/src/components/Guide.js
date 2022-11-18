@@ -15,45 +15,15 @@ export const Guide = ({ allChannelsData }) => {
     const schedules = allChannelsData.map(item => item.schedules)
     useEffect(() => setTime(new Date().toLocaleTimeString().slice(0, 2)), [])
 
-    let pos = { left: 0, x: 0 }
-    function scroller(e) {
-        const ele = document.querySelector(`.${e.currentTarget.className}`);
-        ele.style.userSelect = 'none';
-        pos = {
-            left: ele.scrollLeft,
-            x: e.clientX
-        }
-        document.addEventListener('mousemove', mouseMoveHandler);
-        document.addEventListener('mouseup', mouseUpHandler);
-
-        function mouseMoveHandler(e) {
-            const dx = e.clientX - pos.x;
-            ele.scrollLeft = pos.left - dx;
-        }
-
-        function mouseUpHandler() {
-            document.removeEventListener('mousemove', mouseMoveHandler);
-            document.removeEventListener('mouseup', mouseUpHandler);
-            ele.style.removeProperty('user-select');
-        }
-    }
-
     return (
-        <>
+        <main>
             <Clock
                 setTime={setTime}
             />
 
-            {/* TIMELINE MÅ I SAMME CONTAINERS SOM PROGRAMMET*/}
-
-
-            {time && <Timeline
-                time={time}
-                handleScroller={scroller}
-
-            />}
 
             <section className="guide--container">
+
                 <div className="channel--container">
                     {allChannels &&
                         allChannels.map(item =>
@@ -65,27 +35,37 @@ export const Guide = ({ allChannelsData }) => {
                     }
                 </div>
 
+                {time && <Timeline
+                    time={time}
+
+                />}
+
                 {time &&
-                    <div className="programInfo--container">
-                        {
-                            schedules && schedules.map((schedule, index) =>
-                                <ProgramInfo
-                                    schedule={schedule}
-                                    time={time}
-                                    key={index}
-                                />
+                    <>
+                        <div className="programInfo--container">
+                            {
+                                schedules && schedules.map((schedule, index) =>
+                                    <ProgramInfo
+                                        schedule={schedule}
+                                        time={time}
+                                        key={index}
+                                    />
 
-                            )
-                        }
+                                )
+                            }
 
-                    </div>
+                        </div>
+                        <div className="button--now"> <button > NOW</button> </div>
+                    </>
+
                 }
+
 
             </section>
 
-        </>
 
 
+        </main>
 
 
     )

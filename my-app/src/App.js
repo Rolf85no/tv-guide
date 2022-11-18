@@ -8,12 +8,10 @@ export default function App() {
     if (loading) return <div> ..loading </div>
     return (
         <>
-            <h1>App</h1>
             <React.StrictMode>
                 <Guide
                     allChannelsData={allChannelsData}
                 />
-                <button className="button--now"> NOW</button>
 
             </React.StrictMode>
 

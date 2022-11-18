@@ -15,7 +15,8 @@ export const Timeline = ({ time, handleScroller }) => {
 
         <>
             {/* <div className='marker'></div> */}
-            <div className="timeline--container" title="timeline--container" onMouseDown={handleScroller}>
+            <div className="timeline--container" title="timeline--container">
+                <h3>Channels</h3>
 
                 {elementsArray && elementsArray.map(item =>
                     <div className="timeline--time"
@@ -28,6 +29,7 @@ export const Timeline = ({ time, handleScroller }) => {
                 }
 
             </div>
+
         </>
 
 

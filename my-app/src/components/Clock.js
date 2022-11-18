@@ -18,6 +18,9 @@ export const Clock = ({ setTime }) => {
     }, [clockTime, setTime])
 
     return (
-        <h3 title="currentTime">{clockTime}</h3>
+        <div className="clockName--container">
+            <h2>TV-Guide</h2>
+            <h3 title="currentTime">{clockTime}</h3>
+        </div>
     )
 }
